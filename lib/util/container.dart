@@ -21,14 +21,12 @@ class Box extends StatelessWidget {
             spreadRadius: 3.0,
             blurRadius: 15,
             offset: Offset(5, 5),
-            blurStyle: BlurStyle.inner
           ),
           BoxShadow(
             color: Colors.white,
             spreadRadius: 3.0,
             blurRadius: 10.0,
             offset: Offset(-5, -5),
-            blurStyle: BlurStyle.inner
           ),
         ],
       ),

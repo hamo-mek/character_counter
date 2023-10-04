@@ -25,10 +25,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   int getLetterCount(String text) {
-    RegExp regex = RegExp(r'[A-Za-z]');
+    RegExp regex = RegExp(r'[A-Za-zأ-ي]');
     return regex.allMatches(text).length;
   }
-
 
   int getEmojiCount(String text) {
     RegExp regex = RegExp(
@@ -40,7 +39,6 @@ class _HomePageState extends State<HomePage> {
     int count = matches.length;
     return count;
   }
-
 
   int allOtherCharacters(String text) {
     RegExp regex = RegExp(r"[^A-Za-z0-9\u0080-\uFFFF\u0600-\u06FF]");
@@ -72,33 +70,48 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Box(
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Characters: ${textController.text.length}'),
-                    Text('Words: ${getWordCount(textController.text)}'),
-                  ],
-                ),
-              ),
-              Box(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Numbers: ${getNumberCount(textController.text)}'),
-                    Text('Letters: ${getLetterCount(textController.text)}'),
-                  ],
-                ),
-              ),
-              Box(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Emojis: ${getEmojiCount(textController.text)}'),
-
-                    Text(
-                      'Special Characters: '
-                          '${allOtherCharacters(textController.text)}',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Characters: ${textController.text.length}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        Text('Words: ${getWordCount(textController.text)}'),
+                      ],
                     ),
+                    SizedBox(height: 40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Letters: ${getLetterCount(textController.text)}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        Text(
+                          'Numbers: ${getNumberCount(textController.text)}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Emojis: ${getEmojiCount(textController.text)}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        Text(
+                          'Special Characters: '
+                          '${allOtherCharacters(textController.text)}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               )
